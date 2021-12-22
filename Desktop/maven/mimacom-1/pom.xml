@@ -5,13 +5,13 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.6.1</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<version>2.6.2</version>
+		<relativePath/> <!-- lookup parent fr om repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>mimacom</artifactId>
+	<artifactId>mimacom-1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>mimacom</name>
+	<name>mimacom-1</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>1.8</java.version>
@@ -32,32 +32,34 @@
 	<build>
 	<pluginManagement>
 		<plugins>
-		<plugin>
-      <artifactId>maven-resources-plugin</artifactId>
-      <version>3.2.0</version>
-      <executions>
-        <execution>
-          <id>copy-hooks</id>
-          <phase>validate</phase>
-          <goals>
-            <goal>copy-resources</goal>
-          </goals>
-          <configuration>
-            <outputDirectory>C:\Users\santi\Desktop\mimacom\.git\hooks/.git/hooks/commit-msg </outputDirectory>
-            <resources>
-              <resource>
-                <directory>git-hooks</directory>
-              </resource>
-            </resources>
-          </configuration>
-        </execution>
-      </executions>
-    </plugin>
-		
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			
+			<plugin>
+      <groupId>se.bjurr.gitchangelog</groupId>
+      <artifactId>git-changelog-maven-plugin</artifactId>
+     <version>${changelog.version}</version>
+      <executions>
+       <execution>
+        <id>GenerateGitChangelog</id>
+        <phase>generate-sources</phase>
+        <goals>
+         <goal>git-changelog</goal>
+        </goals>
+        <configuration>
+         <templateContent>
+         <![CDATA[
+          Template here!
+         ]]>
+         </templateContent>
+         <file>CHANGELOG_custom.md</file>
+        </configuration>
+       </execution>
+      </executions>
+     </plugin>
+			
 		</plugins>
 		</pluginManagement>
 	</build>
